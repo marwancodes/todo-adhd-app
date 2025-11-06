@@ -1,4 +1,4 @@
-import SafeScreen from "@/components/SafeScreen";
+
 import { ThemeProvider } from "@/hooks/useTheme";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { Stack } from "expo-router";
@@ -13,11 +13,9 @@ export default function RootLayout() {
     <ConvexProvider client={convex}>
 
       <ThemeProvider>
-        <SafeScreen>
           <Stack screenOptions={{ headerShown: false}}>
             <Stack.Screen name="(tabs)" />;
           </Stack>
-        </SafeScreen>
       </ThemeProvider>
       
     </ConvexProvider>

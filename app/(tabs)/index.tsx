@@ -1,44 +1,55 @@
-import useTheme, { ColorScheme } from "@/hooks/useTheme";
+import { createHomeStyles } from "@/assets/styles/home.styles";
+import useTheme from "@/hooks/useTheme";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity, View, } from "react-native";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function Index() {
   
   const {toggleDarkMode, colors} = useTheme();
 
-  const styles = createStyles(colors);
+  const homeStyles = createHomeStyles(colors);
 
   return (
-    <View
-      style={styles.container}
-    >
-      <Text style={styles.header}>TODO ADHD</Text>
-      <Text>Marwan</Text>
+    <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
 
-      <Link href="/_sitemap">Press me</Link>
+      <StatusBar barStyle={colors.statusBarStyle}/>
+      <SafeAreaView style={homeStyles.container}>
+        <Text style={homeStyles.header}>TODO ADHD</Text>
+        <Text>Marwan</Text>
 
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text>Toggle the mode</Text>
-      </TouchableOpacity>
+        <Link href="/_sitemap">Press me</Link>
 
-    </View>
+        <TouchableOpacity onPress={toggleDarkMode}>
+          <Text>Toggle the mode</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    
+    </LinearGradient>
   );
 }
 
-const createStyles = (colors:ColorScheme) => {
 
-  const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      gap: 10,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: colors.bg,
-    },
-    header: {
-      fontSize: 48,
-    },
-  });
 
-  return styles;
-};
+
+
+
+// const createStyles = (colors:ColorScheme) => {
+
+//   const styles = StyleSheet.create({
+//     container: {
+//       flex:1,
+//       gap: 10,
+//       justifyContent: "center",
+//       alignItems: "center",
+//       backgroundColor: colors.bg,
+//     },
+//     header: {
+//       fontSize: 48,
+//     },
+//   });
+
+//   return styles;
+// };
