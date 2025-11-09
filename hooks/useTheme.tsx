@@ -19,6 +19,7 @@ export interface ColorScheme {
     surface: [string, string];
     primary: [string, string];
     success: [string, string];
+    edit: [string, string];
     warning: [string, string];
     danger: [string, string];
     muted: [string, string];
@@ -47,6 +48,7 @@ const lightColors: ColorScheme = {
     surface: ["#ffffff", "#f8fafc"],
     primary: ["#3b82f6", "#1d4ed8"],
     success: ["#10b981", "#059669"],
+    edit: ["#0ec5cfff", "#058dacff"],
     warning: ["#f59e0b", "#d97706"],
     danger: ["#ef4444", "#dc2626"],
     muted: ["#9ca3af", "#6b7280"],
@@ -75,6 +77,7 @@ const darkColors: ColorScheme = {
     surface: ["#1e293b", "#334155"],
     primary: ["#3b82f6", "#1d4ed8"],
     success: ["#10b981", "#059669"],
+    edit: ["#0db5d3ff", "#1386e3ff"],
     warning: ["#f59e0b", "#d97706"],
     danger: ["#ef4444", "#dc2626"],
     muted: ["#374151", "#4b5563"],

@@ -25,7 +25,8 @@ export default function Index() {
   const todos = useQuery(api.todos.getTodos);
 
   const toggleTodo = useMutation(api.todos.toggleTodo);
-
+  const deleteTodo = useMutation(api.todos.deleteTodo);
+  const updateTodo = useMutation(api.todos.updateTodo);
 
   const isLoading = todos === undefined;
 
@@ -42,7 +43,12 @@ export default function Index() {
     }
   };
 
-
+  const handleDeleteTodo = async (id: Id<"todos">) => {
+    Alert.alert("Delete Todo", "Are you sure you want to delete this todo?", [
+      { text: "Cancel", style: "cancel" },
+      { text: "Delete", style: "destructive", onPress: () => deleteTodo({ id }) },
+    ]);
+  };
 
   const renderTodoItem = ({item}: {item:Todo}) => {
     return (
@@ -69,13 +75,13 @@ export default function Index() {
 
             <View style={homeStyles.todoActions}>
                 <TouchableOpacity onPress={() => (item)} activeOpacity={0.8}>
-                  <LinearGradient colors={colors.gradients.warning} style={homeStyles.actionButton}>
-                    <Ionicons name="pencil" size={14} color="#fff" />
+                  <LinearGradient colors={colors.gradients.edit} style={homeStyles.actionButton}>
+                    <Ionicons name="pencil" size={20} color="#fff" />
                   </LinearGradient>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => (item._id)} activeOpacity={0.8}>
+                <TouchableOpacity onPress={() => handleDeleteTodo(item._id)} activeOpacity={0.8}>
                   <LinearGradient colors={colors.gradients.danger} style={homeStyles.actionButton}>
-                    <Ionicons name="trash" size={14} color="#fff" />
+                    <Ionicons name="trash" size={20} color="#fff" />
                   </LinearGradient>
                 </TouchableOpacity>
             </View>
